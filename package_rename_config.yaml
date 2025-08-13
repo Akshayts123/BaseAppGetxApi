@@ -1,0 +1,9 @@
+package_rename_config:
+  android:
+    app_name: "Base"
+    package_name: "com.x.base"
+
+  ios:
+    app_name: "Base"
+    bundle_name: "com.base.user"
+    package_name: "com.base.user"
