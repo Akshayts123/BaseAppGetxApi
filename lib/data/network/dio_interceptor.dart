@@ -100,10 +100,11 @@ class DioInterceptor extends Interceptor {
     final responseData = response.data;
 
     if (response.statusCode == ApiState.success) {
+      customSnackbar( text: 'Success' , isError: false);
       hasErrorOccurred = false; // Reset the error flag after a successful response
     }
       if (response.statusCode == ApiState.failure) {
-      customSnackbar( text: response.data['errormessage'] , isError: true);
+      customSnackbar( text: "Failure" , isError: true);
     }
 
     return super.onResponse(response, handler);

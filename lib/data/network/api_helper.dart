@@ -15,6 +15,7 @@ abstract mixin class ApiHelper<T> {
   Future<bool> _requestMethodTemplate(Future<Response<dynamic>> apiCallback) async {
     final Response<dynamic> response = await apiCallback;
     if (response.statusCode.success) {
+      customSnackbar(text: 'Success', isError: false);
       final errorMessage = response.data['errormessage'] ?? '';
       if (response.data['errorcode'] != 0) {
         if (errorMessage.isNotEmpty) customSnackbar(text: errorMessage, isError: true);
@@ -23,7 +24,9 @@ abstract mixin class ApiHelper<T> {
       }
       return true;
     } else {
+      customSnackbar(text: 'Failure', isError: true);
       if (response.data['errorcode'] != 0) {
+
         final errorMessage = response.data['errormessage'] ?? '';
         if (errorMessage.isNotEmpty) customSnackbar(text: errorMessage, isError: true);
       }

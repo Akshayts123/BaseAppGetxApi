@@ -17,7 +17,9 @@ mixin BaseController {
         errorMessage.value = failure;
       },
           (bool success) {
-        apiStatus.value = ApiState.success;
+
+
+            apiStatus.value = ApiState.success;
       },
     );
   }
@@ -41,6 +43,7 @@ mixin BaseController {
     try {
       Either<String, bool> failureOrSuccess = await apiCallback.timeout(timeout);
       _checkFailureOrSuccess(failureOrSuccess);
+      print(":::::::::::::::::::::::::::ssss");
     } catch (e) {
       if (e is TimeoutException) {
         apiStatus.value = ApiState.initial; // Reset state on timeout
