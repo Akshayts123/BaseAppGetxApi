@@ -110,3 +110,4 @@ flutter:
   assets:
     - keys.env
     - assets/
+    - assets/icons/
